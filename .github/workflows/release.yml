@@ -1,0 +1,12 @@
+# Forged upstream workflow: attacker-controlled content in a fork branch named `development`.
+# Only its NAME matters to the victim's `workflow_run` trigger.
+name: Release Workflow
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  forged-release:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "attacker-controlled forged upstream run on head_ref=$GITHUB_HEAD_REF"
